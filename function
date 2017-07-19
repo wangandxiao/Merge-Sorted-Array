@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int posCur = m + n - 1;
+	int pos1 = m - 1;
+	int pos2 = n - 1;
+	while (pos2 >= 0 && pos1 >= 0) {
+		if (nums2[pos2] >= nums1[pos1]) {
+			nums1[posCur] = nums2[pos2];
+			pos2--;
+			posCur--;
+		}
+		else {
+			nums1[posCur] = nums1[pos1];
+			pos1--;
+			posCur--;
+		}
+	}
+	if (pos2 >= 0) {
+		while (pos2 >= 0) {
+			nums1[posCur] = nums2[pos2];
+			pos2--;
+			posCur--;
+		}
+	}
+    }
+};
